@@ -1,8 +1,17 @@
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <string.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <stdio.h>
+#include "main.h"
+
 /**
  * main - Entry point for our shell program.
  * @argc: Number of arguments received.
  * @argv: Array of received arguments.
- * 
+ *
  * Return: 0 on successful exit, otherwise non-zero.
  */
 int main(int argc, char **argv)
@@ -14,7 +23,10 @@ int main(int argc, char **argv)
 		"TERM=xterm",
 		NULL
 	};
-       	while (1)
+
+	(void)argc;
+
+	while (1)
 	{
 		if (prompt_user(&line) <= 0)
 		{
@@ -26,4 +38,3 @@ int main(int argc, char **argv)
 		line = NULL;
 	}
 }
-
